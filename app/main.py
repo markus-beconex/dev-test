@@ -21,8 +21,6 @@ app.add_middleware(CorrelationIdMiddleware)
 app.add_exception_handler(AppError, app_error_handler)
 app.add_exception_handler(Exception, unhandled_error_handler)
 
-app.include_router(tickets_router)
-
 
 @app.get("/health")
 async def health():
