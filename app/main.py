@@ -33,9 +33,3 @@ async def health():
 async def ready(session: AsyncSession = Depends(get_session)):
     await session.execute(text("SELECT 1"))
     return {"status": "ready"}
-
-
-@app.on_event("startup")
-async def on_startup() -> None:
-    async with engine.begin() as conn:
-        await conn.run_sync(Base.metadata.create_all)
